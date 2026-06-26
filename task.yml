@@ -1,11 +1,19 @@
 ---
-- name: tasks01
+- name: task01
   hosts: cisco
   connection: network_cli
   remote_user: student
   gather_facts: yes
   tasks:
-    - name: task01 doooooooo print facts
-      debug:
-        var: ansible_facts
-
+    - name: create a new user
+      cisco.ios.ios_user:
+        name: Amr
+        nopassword: true
+        sshkey: "{{ lookup('file', '~/.ssh/lab_rsa.pub') }}"
+        state: present
+    - name: Configure the login banner
+      cisco.ios.ios_banner:
+        banner: login
+        text: |
+          hallo and welcom to my router 
+        state: present
