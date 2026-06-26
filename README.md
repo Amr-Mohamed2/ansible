@@ -1,2 +1,2 @@
 # ansible
-# ansible-navigator run tasks.yml -m stdout 
+# ansible-navigator run task.yml -m stdout 
